@@ -104,6 +104,12 @@
       <artifactId>hibernate-validator</artifactId>
     </dependency>
 
+    <!-- Spring Boot -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-jta-narayana</artifactId>
+    </dependency>
+
     <!-- Persistence -->
     <dependency>
       <groupId>org.springframework</groupId>
