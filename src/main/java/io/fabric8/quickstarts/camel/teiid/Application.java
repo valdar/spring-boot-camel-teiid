@@ -23,7 +23,7 @@ import org.springframework.context.annotation.ImportResource;
  * The Spring-boot main class.
  */
 @SpringBootApplication
-@ImportResource({"/META-INF/spring/datasource.xml", "/META-INF/spring/camel-context.xml"})
+@ImportResource({"classpath:spring/datasource.xml", "classpath:spring/camel-context.xml"})
 public class Application extends FatJarRouter {
 
     // must have a main method spring-boot can run
