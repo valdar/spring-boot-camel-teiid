@@ -105,6 +105,10 @@
     </dependency>
 
     <!-- Spring Boot -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
 <!--
     TODO add this dependency when upgrading to spring boot 1.4.x or later!
 
