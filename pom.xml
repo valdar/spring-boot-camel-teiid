@@ -31,8 +31,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <!-- dependency versions -->
-    <camel.version>2.18.0</camel.version>
-    <fabric8.version>2.2.168</fabric8.version>
+    <fabric8.version>2.2.169</fabric8.version>
     <h2.version>1.4.192</h2.version>
     <spring-boot.version>1.4.1.RELEASE</spring-boot.version>
     <teiid.version>9.0.0.Final</teiid.version>
@@ -47,25 +46,10 @@
 
   <dependencyManagement>
     <dependencies>
-      <!-- import fabric8 platform bom first -->
       <dependency>
         <groupId>io.fabric8</groupId>
-        <artifactId>fabric8-project-bom-with-platform-deps</artifactId>
+        <artifactId>fabric8-project-bom-camel-spring-boot</artifactId>
         <version>${fabric8.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-dependencies</artifactId>
-        <version>${spring-boot.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-parent</artifactId>
-        <version>${camel.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -93,7 +77,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.camel</groupId>
-      <artifactId>camel-sql</artifactId>
+      <artifactId>camel-sql-starter</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.camel</groupId>
@@ -109,14 +93,12 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
-<!--
-    TODO add this dependency when upgrading to spring boot 1.4.x or later!
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-jta-narayana</artifactId>
     </dependency>
--->
+
 
     <!-- Persistence -->
     <dependency>
