@@ -18,31 +18,35 @@
 -->
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd        http://camel.apache.org/schema/spring       http://camel.apache.org/schema/spring/camel-spring.xsd">
+
     <!-- A random country generator -->
     <bean class="io.fabric8.quickstarts.camel.teiid.RandomGenerator" id="random"/>
+
     <!-- Camel Route -->
     <camelContext depends-on="teiid" id="camel" xmlns="http://camel.apache.org/schema/spring">
         <route id="test-route" trace="false">
             <description>Example route that will regularly generate a random country code and then compute the total revenue using a cross-database join on the Teiid virtual database</description>
-            <from id="timer" uri="timer:testRoute?period=5s"/>
-            <setHeader headerName="country" id="set-random-country">
+
+            <from id="route-timer" uri="timer:testRoute?period=5s"/>
+            <setHeader headerName="country" id="route-set-random-country">
                 <method bean="random" method="randomCountry"/>
             </setHeader>
-            <to id="select-query" uri="sql:select sum(s.price) from mysales s join myinventory i on s.code=i.code where i.country=:#country?dataSource=teiid&amp;outputType=SelectOne"/>
-            <choice id="choice">
-                <when id="when-high-revenue">
+            <to id="route-select-query" uri="sql:select sum(s.price) from mysales s join myinventory i on s.code=i.code where i.country=:#country?dataSource=teiid&amp;outputType=SelectOne"/>
+
+            <choice id="route-choice">
+                <when id="route-when-high-revenue">
                     <simple>${body} &gt;= 100</simple>
                     <!-- When the query returns a result that is greater than or equal to 100 -->
-                    <log id="log-high-revenue" message="High revenue for country ${header.country}: $ ${body} :)"/>
+                    <log id="route-log-high-revenue" message="High revenue for country ${header.country}: $ ${body} :)"/>
                 </when>
-                <when id="when-low-revenue">
+                <when id="route-when-low-revenue">
                     <simple>${body} &lt; 100</simple>
                     <!-- When the query returns a result that is lower than 100 -->
-                    <log id="log-low-revenue" message="Revenue for country ${header.country}: $ ${body}"/>
+                    <log id="route-log-low-revenue" message="Revenue for country ${header.country}: $ ${body}"/>
                 </when>
-                <otherwise id="when-no-result">
+                <otherwise id="route-when-no-result">
                     <!-- When the query has no result -->
-                    <log id="log-no-result" message="No revenue for country ${header.country} :("/>
+                    <log id="route-log-no-result" message="No revenue for country ${header.country} :("/>
                 </otherwise>
             </choice>
         </route>
