@@ -23,7 +23,7 @@ import org.springframework.context.annotation.ImportResource;
  * The Spring-boot main class.
  */
 @SpringBootApplication
-@ImportResource({"classpath:spring/datasource.xml", "classpath:spring/camel-context.xml"})
+@ImportResource({"classpath:spring/camel-context.xml"})
 public class Application {
 
     // must have a main method spring-boot can run
