@@ -33,7 +33,7 @@
     <!-- dependency versions -->
     <fabric8.version>2.2.176</fabric8.version>
     <spring-boot.version>1.4.1.RELEASE</spring-boot.version>
-    <teiid.version>8.13.7</teiid.version>
+    <teiid.version>9.0.0.Final</teiid.version>
 
     <!-- maven plugin versions -->
     <fabric8.maven.plugin.version>3.2.1</fabric8.maven.plugin.version>
