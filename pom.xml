@@ -32,9 +32,8 @@
 
     <!-- dependency versions -->
     <fabric8.version>2.2.176</fabric8.version>
-    <h2.version>1.4.192</h2.version>
     <spring-boot.version>1.4.1.RELEASE</spring-boot.version>
-    <teiid.version>9.0.0.Final</teiid.version>
+    <teiid.version>8.12.5.redhat-8</teiid.version>
 
     <!-- maven plugin versions -->
     <fabric8.maven.plugin.version>3.1.92</fabric8.maven.plugin.version>
@@ -59,12 +58,7 @@
     <!-- Teiid -->
     <dependency>
       <groupId>org.jboss.teiid</groupId>
-      <artifactId>teiid-runtime</artifactId>
-      <version>${teiid.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.jboss.teiid.connectors</groupId>
-      <artifactId>translator-jdbc</artifactId>
+      <artifactId>teiid-client</artifactId>
       <version>${teiid.version}</version>
     </dependency>
 
@@ -88,34 +82,20 @@
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-jta-narayana</artifactId>
-    </dependency>
-
-
-    <!-- Persistence -->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-jdbc</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <version>${h2.version}</version>
-    </dependency>
-
     <!-- Test -->
-    <dependency>
-      <groupId>org.jboss.arquillian.junit</groupId>
-      <artifactId>arquillian-junit-container</artifactId>
-      <scope>test</scope>
-    </dependency>
     <dependency>
       <groupId>io.fabric8</groupId>
       <artifactId>fabric8-arquillian</artifactId>
       <scope>test</scope>
     </dependency>
+
+    <!-- For auto-configuration of quickstart properties -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+      <optional>true</optional>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -169,22 +149,5 @@
       </plugin>
     </plugins>
   </build>
-
-
-  <repositories>
-    <repository>
-      <id>jboss-public-repository-group</id>
-      <name>JBoss Public Repository Group</name>
-      <url>https://repository.jboss.org/nexus/content/groups/public/</url>
-      <releases>
-        <enabled>true</enabled>
-        <updatePolicy>never</updatePolicy>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-        <updatePolicy>daily</updatePolicy>
-      </snapshots>
-    </repository>
-  </repositories>
 
 </project>

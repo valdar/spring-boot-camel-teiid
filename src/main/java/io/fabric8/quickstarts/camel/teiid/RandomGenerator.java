@@ -17,17 +17,20 @@ package io.fabric8.quickstarts.camel.teiid;
 
 import java.util.Random;
 
+import org.springframework.stereotype.Component;
+
 /**
- * Generates random countries.
+ * Generates random categories.
  */
+@Component
 public class RandomGenerator {
 
-    private static final String[] COUNTRIES = {"IT", "UK", "US"};
+    private static final String[] CATEGORIES = {"Car", "Mortgage", "Bike"};
 
     private Random random = new Random();
 
-    public String randomCountry() {
-        return COUNTRIES[random.nextInt(COUNTRIES.length)];
+    public String randomCategory() {
+        return CATEGORIES[random.nextInt(CATEGORIES.length)];
     }
 
 }
