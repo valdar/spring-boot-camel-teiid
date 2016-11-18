@@ -1,10 +1,17 @@
 # Spring-Boot Camel-Teiid QuickStart
 
-This example demonstrates how you can use Apache Camel and Teiid on Spring Boot running on Kubernetes or OpenShift.
+This example demonstrates how to connect Apache Camel to a remote JBoss Data Virtualization (or Teiid) Server using the JDBC protocol.
 
-Two (sample) embedded H2 database instances are created and linked together through a Teiid virtual database layer.
-A camel route periodically generates a random input and queries the virtual database to
-compute intermediate routing information.
+In the example, a Camel route periodically generates random categories then executes aggregate queries in the remote Teiid virtual database (VDB),
+performing different paths depending on the result of each query.
+
+This quickstart assumes that the Teiid server is already running on Openshift (or Kubernetes) with the example `Portfolio` virtual database deployed.
+One simple way to run a Teiid server and deploy the `Portfolio` virtual database is following the documentation of the JDV xPaaS image for Openshift related to 
+the `datavirt63-basic-s2i` template.
+
+During the JDV server creation, the username and password fields for the Teiid user should be filled in.
+The same credentials must be used in this quickstart for the properties `teiid.username` and `teiid.password` of the `application.properties` file.
+When using the Openshift S2I build mode, the credentials must be provided in the template.
 
 ### Building
 
