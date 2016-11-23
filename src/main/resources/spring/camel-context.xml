@@ -29,7 +29,7 @@
             <setHeader headerName="category" id="route-set-random-category">
                 <method bean="randomGenerator" method="randomCategory"/>
             </setHeader>
-            <to id="route-select-query" uri="sql:select sum(cast(s.product_value as bigdecimal)) from sheet1 s where s.product_type=:#category?dataSource=teiidDS&amp;outputType=SelectOne"/>
+            <to id="route-select-query" uri="sql:select sum(h.product_value) from PersonalHoldings h where h.product_type=:#category?dataSource=teiidDS&amp;outputType=SelectOne"/>
 
             <choice id="route-choice">
                 <when id="route-when-high-value">
