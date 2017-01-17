@@ -5,13 +5,11 @@ This example demonstrates how to connect Apache Camel to a remote JBoss Data Vir
 In the example, a Camel route periodically generates random categories then executes aggregate queries in the remote Teiid virtual database (VDB),
 performing different paths depending on the result of each query.
 
-This quickstart assumes that the Teiid server is already running on Openshift (or Kubernetes) with the example `Portfolio` virtual database deployed.
-One simple way to run a Teiid server and deploy the `Portfolio` virtual database is following the documentation of the JDV xPaaS image for Openshift related to 
-the `datavirt63-basic-s2i` template.
+This quickstart assumes that the Teiid server is already running on Openshift with the example `Portfolio` virtual database deployed.
+One simple way to run a Teiid server and deploy the `Portfolio` virtual database is following the documentation of the JDV xPaaS image for Openshift related to the `datavirt63-basic-s2i` template.
 
 During the JDV server creation, the username and password fields for the Teiid user should be filled in.
-The same credentials must be used in this quickstart for the properties `teiid.username` and `teiid.password` of the `application.properties` file.
-When using the Openshift S2I build mode, the credentials must be provided in the template.
+The same credentials must be used in this quickstart for the properties `teiid.username` and `teiid.password` of the `application.properties` file. When using the Openshift S2I build mode, the credentials must be provided in the template.
 
 ### Building
 
@@ -27,26 +25,20 @@ The example can be run locally using the following Maven goal:
     mvn spring-boot:run
 
 
-### Running the example in Kubernetes
+### Running the example in OpenShift
 
-It is assumed a running Kubernetes platform is already running. If not you can find details how to [get started](http://fabric8.io/guide/getStarted/index.html).
+It is assumed a running OpenShift platform is already running. 
 
-Assuming your current shell is connected to Kubernetes or OpenShift so that you can type a command like
-
-```
-kubectl get pods
-```
-
-or for OpenShift
+Assuming your current shell is connected to OpenShift so that you can type a command like
 
 ```
 oc get pods
 ```
 
-Then the following command will package your app and run it on Kubernetes:
+Then the following command will package your app and run it on OpenShift:
 
 ```
-mvn fabric8:run
+mvn fabric8:deploy
 ```
 
 To list all the running pods:
@@ -57,9 +49,16 @@ Then find the name of the pod that runs this quickstart, and output the logs fro
 
     oc logs <name of pod>
 
-You can also use the [fabric8 developer console](http://fabric8.io/guide/console.html) to manage the running pods, and view logs and much more.
+### Running via an S2I Application Template
 
+Applicaiton templates allow you deploy applications to OpenShift by filling out a form in the OpenShift console that allows you to adjust deployment parameters.  This template uses an S2I source build so that it handle building and deploying the application for you.
 
-### More details
+First, import the Fuse image streams:
 
-You can find more details about running this [quickstart](http://fabric8.io/guide/quickstarts/running.html) on the website. This also includes instructions how to change the Docker image user and registry.
+    oc create -f https://raw.githubusercontent.com/jboss-fuse/application-templates/fis-2.0.x.redhat/fis-image-streams.json
+
+Then create the quickstart template:
+
+    oc create -f https://raw.githubusercontent.com/jboss-fuse/application-templates/fis-2.0.x.redhat/quickstarts/spring-boot-camel-teiid-template.json
+
+Now when you use "Add to Project" button in the OpenShift console, you should see a template for this quickstart. 
