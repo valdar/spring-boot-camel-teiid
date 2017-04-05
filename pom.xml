@@ -22,7 +22,7 @@
 
   <groupId>io.fabric8.quickstarts</groupId>
   <artifactId>spring-boot-camel-teiid</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0.0.fuse-R2-000001</version>
 
   <name>Fabric8 :: Quickstarts :: Spring-Boot :: Camel-Teiid</name>
   <description>Spring Boot example running a Camel route using data virtualization</description>
@@ -31,12 +31,12 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <!-- dependency versions -->
-    <fabric8.version>2.2.176</fabric8.version>
+    <fabric8.version>2.2.170.fuse-R2-000001</fabric8.version>
     <spring-boot.version>1.4.1.RELEASE</spring-boot.version>
-    <teiid.version>8.13.7</teiid.version>
+    <teiid.version>8.12.5.redhat-8</teiid.version>
 
     <!-- maven plugin versions -->
-    <fabric8.maven.plugin.version>3.1.92</fabric8.maven.plugin.version>
+    <fabric8.maven.plugin.version>3.1.80.fuse-R2-000001</fabric8.maven.plugin.version>
     <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
     <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
   </properties>
