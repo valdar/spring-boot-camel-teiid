@@ -36,7 +36,7 @@
     <teiid.version>9.0.0.Final</teiid.version>
 
     <!-- maven plugin versions -->
-    <fabric8.maven.plugin.version>3.5.10</fabric8.maven.plugin.version>
+    <fabric8.maven.plugin.version>3.5.15</fabric8.maven.plugin.version>
     <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
     <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
   </properties>
